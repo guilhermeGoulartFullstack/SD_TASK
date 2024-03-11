@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class AccountRegsistration extends StatefulWidget {
+class Accountregistration extends StatefulWidget {
   static const String route = "/account_registration";
 
-  const AccountRegsistration({super.key});
+  const Accountregistration({super.key});
 
   @override
-  State<AccountRegsistration> createState() => _AccountRegsistrationState();
+  State<Accountregistration> createState() => _AccountregistrationState();
 }
 
-class _AccountRegsistrationState extends State<AccountRegsistration> {
+class _AccountregistrationState extends State<Accountregistration> {
   @override
   Widget build(BuildContext context) {
     return const Placeholder();
