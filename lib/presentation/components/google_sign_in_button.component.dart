@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sd_task/auth/google_auth.auth.dart';
+import 'package:sd_task/firebase/controller/user_account_controller.firebase.dart';
 import 'package:sign_in_button/sign_in_button.dart';
 
 class GoogleSignInButton extends StatelessWidget {
@@ -10,7 +13,7 @@ class GoogleSignInButton extends StatelessWidget {
 
   final FirebaseAuth auth = FirebaseAuth.instance;
 
-  void handleGoogleLogin(BuildContext context) async {
+  Future<void> handleGoogleLogin(BuildContext context) async {
     await GoogleAuth().googleSignIn();
   }
 
@@ -21,8 +24,10 @@ class GoogleSignInButton extends StatelessWidget {
       child: SignInButton(
         Buttons.google,
         text: "Logar com o Google",
-        onPressed: () {
-          handleGoogleLogin(context);
+        onPressed: () async {
+          await handleGoogleLogin(context);
+          User? user = FirebaseAuth.instance.currentUser;
+          await UserAccountController().add(user: user);
         },
       ),
     );
