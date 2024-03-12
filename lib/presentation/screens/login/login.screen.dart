@@ -1,9 +1,12 @@
+import 'dart:developer';
+
 import 'package:gap/gap.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:sd_task/core/custom_colors.core.dart';
+import 'package:sd_task/firebase/controller/user_account_controller.firebase.dart';
 import 'package:sd_task/utils/api_error_translator.util.dart';
 import 'package:sd_task/presentation/screens/login/mobx/login_mobx.mobx.dart';
 import 'package:sd_task/presentation/components/default_text_field.component.dart';
@@ -58,6 +61,8 @@ class _LoginState extends State<Login> {
         mobx.setHasError(false);
         await FirebaseAuth.instance.signInWithEmailAndPassword(
             email: emailController.text, password: passwordController.text);
+        User? user = FirebaseAuth.instance.currentUser;
+        await UserAccountController().add(user: user);
       } on FirebaseAuthException catch (e) {
         mobx.setHasError(true);
         errorMessage = ApiErrorTraslator.translate(exception: e);
