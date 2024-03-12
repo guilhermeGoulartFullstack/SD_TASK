@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "361924353272",
+    "project_id": "sd-task-a6101",
+    "storage_bucket": "sd-task-a6101.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:361924353272:android:ac2c32097c24116a77ef0d",
+        "android_client_info": {
+          "package_name": "com.example.sd_task"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRExZ_hhvTosg3rqVHdkJ3fpataX7Sagc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
