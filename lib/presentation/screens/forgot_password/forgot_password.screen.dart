@@ -19,7 +19,7 @@ class ForgotPassword extends StatefulWidget {
 
 class _ForgotPasswordState extends State<ForgotPassword> {
   TextEditingController emailController = TextEditingController();
-  late ForgotPasswordMobx mobx;
+  late final ForgotPasswordMobx mobx;
   String apiMessage = "Erro inesperado";
 
   @override

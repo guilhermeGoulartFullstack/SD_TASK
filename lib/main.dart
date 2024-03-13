@@ -1,10 +1,11 @@
+import 'package:sd_task/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:sd_task/firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:sd_task/core/custom_colors.core.dart';
-import 'package:sd_task/presentation/screens/home.screen.dart';
 import 'package:sd_task/presentation/screens/login/login.screen.dart';
+import 'package:sd_task/presentation/screens/configuration/configuration.screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,7 +24,7 @@ class MainApp extends StatelessWidget {
             stream: FirebaseAuth.instance.authStateChanges(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                return const Home();
+                return const Configuration();
               } else {
                 return const Login();
               }
@@ -33,6 +34,7 @@ class MainApp extends StatelessWidget {
           textSelectionTheme: TextSelectionThemeData(
         selectionHandleColor: CustomColors.darkGray.withOpacity(0.7),
       )),
+      onGenerateRoute: Routes.generatedRoute,
     );
   }
 }

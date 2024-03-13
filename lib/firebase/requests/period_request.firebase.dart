@@ -1,6 +1,7 @@
 import 'package:sd_task/domain/enums/category.dart';
 
 class PeriodRequest {
+  String? id;
   String name;
   int start;
   int ends;
@@ -9,6 +10,7 @@ class PeriodRequest {
   int? goalTwo;
 
   PeriodRequest({
+    this.id,
     required this.name,
     required this.start,
     required this.ends,

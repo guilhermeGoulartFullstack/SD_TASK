@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter/material.dart';
 import 'package:sd_task/core/custom_colors.core.dart';
 
 class PeriodCard extends StatelessWidget {
@@ -24,13 +24,16 @@ class PeriodCard extends StatelessWidget {
     return Container(
       width: double.maxFinite,
       height: 38,
-      decoration: const BoxDecoration(
-        color: CustomColors.offWhite,
-        borderRadius: BorderRadius.all(Radius.circular(15)),
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: CustomColors.mediumGray,
+        ),
+        color: CustomColors.white,
+        borderRadius: const BorderRadius.all(Radius.circular(5)),
       ),
       child: Center(
         child: Padding(
-          padding: EdgeInsets.only(right: 10, left: 8),
+          padding: const EdgeInsets.only(right: 10, left: 8),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -46,7 +49,7 @@ class PeriodCard extends StatelessWidget {
                 '${dateFormater(date: start)} a ${dateFormater(date: ends)}',
                 style: const TextStyle(
                   fontSize: 11,
-                  fontWeight: FontWeight.w400,
+                  fontWeight: FontWeight.w500,
                   color: CustomColors.darkGray,
                 ),
               ),

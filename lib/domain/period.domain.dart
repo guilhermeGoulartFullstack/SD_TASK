@@ -1,7 +1,5 @@
-import 'dart:developer';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:sd_task/domain/enums/category.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Period {
   String id;
@@ -23,7 +21,6 @@ class Period {
   });
 
   factory Period.fromMap(QueryDocumentSnapshot<Map<String, dynamic>> map) {
-    // log(map['period_category']);
     return Period(
       id: map.id,
       name: map['name'],

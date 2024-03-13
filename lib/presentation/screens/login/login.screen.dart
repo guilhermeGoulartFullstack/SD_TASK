@@ -1,15 +1,13 @@
-import 'dart:developer';
-
 import 'package:gap/gap.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:sd_task/core/custom_colors.core.dart';
-import 'package:sd_task/firebase/controller/user_account_controller.firebase.dart';
 import 'package:sd_task/utils/api_error_translator.util.dart';
 import 'package:sd_task/presentation/screens/login/mobx/login_mobx.mobx.dart';
 import 'package:sd_task/presentation/components/default_text_field.component.dart';
+import 'package:sd_task/firebase/controller/user_account_controller.firebase.dart';
 import 'package:sd_task/presentation/components/google_sign_in_button.component.dart';
 import 'package:sd_task/presentation/screens/forgot_password/forgot_password.screen.dart';
 import 'package:sd_task/presentation/screens/account_registration/account_registration.screen.dart';
@@ -26,7 +24,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  late LoginMobx mobx;
+  late final LoginMobx mobx;
   String errorMessage = "Erro inesperado";
 
   @override
