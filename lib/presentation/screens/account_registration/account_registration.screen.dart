@@ -22,7 +22,7 @@ class _AccountregistrationState extends State<Accountregistration> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
-  late AccountRegistrationMobx mobx;
+  late final AccountRegistrationMobx mobx;
   String apiMessage = "Erro inesperado";
 
   @override

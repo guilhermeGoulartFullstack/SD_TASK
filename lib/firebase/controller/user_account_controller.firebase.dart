@@ -1,16 +1,13 @@
-import 'dart:developer';
 import 'dart:io';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:intl/intl.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:sd_task/domain/period.domain.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:sd_task/domain/user_account.domain.dart';
-import 'package:sd_task/firebase/requests/add_user_account_request.firebase.dart';
 import 'package:sd_task/firebase/requests/period_request.firebase.dart';
-import 'package:sd_task/utils/date_formatter.util.dart';
+import 'package:sd_task/firebase/requests/add_user_account_request.firebase.dart';
 
 class UserAccountController {
   CollectionReference<Map<String, dynamic>> userAccountRepository =
@@ -31,11 +28,13 @@ class UserAccountController {
           await userAccountRepository.doc(user.uid).collection("periods").get();
 
       List<Period>? periodList = [];
-      userAccountPeriods.docs.forEach((element) {
-        Period newPeriod = Period.fromMap(element);
+      if (userAccountPeriods.docs.isNotEmpty) {
+        userAccountPeriods.docs.forEach((element) {
+          Period newPeriod = Period.fromMap(element);
 
-        periodList.add(newPeriod);
-      });
+          periodList.add(newPeriod);
+        });
+      }
 
       if (userAccountDoc.exists && (userAccountDoc.data() != null)) {
         return UserAccount.fromMap(
@@ -66,11 +65,27 @@ class UserAccountController {
         );
 
         DocumentReference<Map<String, dynamic>> userAccountDoc =
-            await userAccountRepository.doc(user.uid);
+            userAccountRepository.doc(user.uid);
         Map<String, dynamic> newUser = addUserAccountRequestToMap(request);
 
-        await transaction.set(userAccountDoc, newUser);
+        transaction.set(userAccountDoc, newUser);
       });
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> updateNickname({User? user, required String newNickname}) async {
+    try {
+      _isUserIdNull(user);
+      bool doesUserExist = await _doesAccountExist(userId: user!.uid);
+      if (!doesUserExist) {
+        throw Exception("Usário não existe");
+      }
+
+      await userAccountRepository
+          .doc(user.uid)
+          .set({"nickname": newNickname}, SetOptions(merge: true));
     } catch (e) {
       rethrow;
     }
@@ -110,11 +125,56 @@ class UserAccountController {
       }
       await FirebaseFirestore.instance.runTransaction((transaction) async {
         CollectionReference<Map<String, dynamic>> periodCollection =
-            await userAccountRepository.doc(user.uid).collection("periods");
+            userAccountRepository.doc(user.uid).collection("periods");
 
         Map<String, dynamic> newPeriod = periodRequestToMap(request);
 
-        await transaction.set(periodCollection.doc(), newPeriod);
+        transaction.set(periodCollection.doc(), newPeriod);
+      });
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> editPeriod({User? user, required PeriodRequest request}) async {
+    try {
+      _isUserIdNull(user);
+      bool doesUserExist = await _doesAccountExist(userId: user!.uid);
+      if (!doesUserExist) {
+        throw Exception("Usário não existe");
+      }
+      if (request.id == null) {
+        throw "Período não encontrado";
+      }
+      await FirebaseFirestore.instance.runTransaction((transaction) async {
+        CollectionReference<Map<String, dynamic>> periodCollection =
+            userAccountRepository.doc(user.uid).collection("periods");
+
+        Map<String, dynamic> newPeriod = periodRequestToMap(request);
+
+        transaction.set(periodCollection.doc(request.id), newPeriod,
+            SetOptions(merge: true));
+      });
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> deletePeriod({User? user, String? id}) async {
+    try {
+      _isUserIdNull(user);
+      bool doesUserExist = await _doesAccountExist(userId: user!.uid);
+      if (!doesUserExist) {
+        throw Exception("Usário não existe");
+      }
+      if (id == null) {
+        throw "Período não encontrado";
+      }
+      await FirebaseFirestore.instance.runTransaction((transaction) async {
+        CollectionReference<Map<String, dynamic>> periodCollection =
+            userAccountRepository.doc(user.uid).collection("periods");
+
+        transaction.delete(periodCollection.doc(id));
       });
     } catch (e) {
       rethrow;

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sd_task/presentation/screens/home.screen.dart';
 import 'package:sd_task/presentation/screens/login/login.screen.dart';
-import 'package:sd_task/presentation/screens/configuration.screen.dart';
+import 'package:sd_task/presentation/screens/configuration/configuration.screen.dart';
 import 'package:sd_task/presentation/screens/forgot_password/forgot_password.screen.dart';
 import 'package:sd_task/presentation/screens/account_registration/account_registration.screen.dart';
 
@@ -16,8 +15,6 @@ class Routes {
         return MaterialPageRoute(builder: (_) => const Accountregistration());
       case ForgotPassword.route:
         return MaterialPageRoute(builder: (_) => const ForgotPassword());
-      case Home.route:
-        return MaterialPageRoute(builder: (_) => const Home());
       case Configuration.route:
         return MaterialPageRoute(builder: (_) => const Configuration());
       default:

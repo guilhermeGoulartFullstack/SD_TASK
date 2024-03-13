@@ -1,6 +1,3 @@
-import 'dart:developer';
-import 'dart:io';
-
 import 'package:sd_task/domain/period.domain.dart';
 
 class UserAccount {

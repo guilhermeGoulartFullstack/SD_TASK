@@ -1,18 +1,20 @@
+import 'package:image_picker/image_picker.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:sd_task/firebase/requests/period_request.firebase.dart';
 
 abstract class UserAccountEvent {
-  String userId;
+  User? user;
 
-  UserAccountEvent({required this.userId});
+  UserAccountEvent({this.user});
 }
 
 class LoadUserAccountEvent extends UserAccountEvent {
-  LoadUserAccountEvent({required super.userId});
+  LoadUserAccountEvent({super.user});
 }
 
 class AddUserAccountEvent extends UserAccountEvent {
   AddUserAccountEvent({
-    required super.userId,
+    super.user,
   });
 }
 
@@ -20,22 +22,43 @@ class AddPeriodToUserAccountEvent extends UserAccountEvent {
   PeriodRequest request;
 
   AddPeriodToUserAccountEvent({
-    required super.userId,
+    super.user,
     required this.request,
   });
 }
 
-class EditUserAccontProfile extends UserAccountEvent {
+class EditUserAccontPeriodEvent extends UserAccountEvent {
   PeriodRequest request;
 
-  EditUserAccontProfile({
-    required super.userId,
+  EditUserAccontPeriodEvent({
+    super.user,
     required this.request,
   });
 }
 
-class DeleteUserAccontProfile extends UserAccountEvent {
-  DeleteUserAccontProfile({
-    required super.userId,
+class EditUserAccountNicknameEvent extends UserAccountEvent {
+  String newNickname;
+
+  EditUserAccountNicknameEvent({
+    super.user,
+    required this.newNickname,
+  });
+}
+
+class EditUserAccountPhotoEvent extends UserAccountEvent {
+  XFile file;
+
+  EditUserAccountPhotoEvent({
+    super.user,
+    required this.file,
+  });
+}
+
+class DeletePeriodFromUserAccountEvent extends UserAccountEvent {
+  String id;
+
+  DeletePeriodFromUserAccountEvent({
+    super.user,
+    required this.id,
   });
 }
