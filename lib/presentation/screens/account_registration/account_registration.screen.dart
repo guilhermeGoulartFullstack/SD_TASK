@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:gap/gap.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -71,7 +69,6 @@ class _AccountregistrationState extends State<Accountregistration> {
       }
       apiMessage = "Conta criada com sucesso!";
     } on FirebaseAuthException catch (e) {
-      log(e.toString());
       apiMessage = ApiErrorTraslator.translate(exception: e);
       mobx.setHasError(true);
     } finally {
@@ -153,7 +150,7 @@ class _AccountregistrationState extends State<Accountregistration> {
                             child: Center(
                               child: mobx.isLoading
                                   ? const CircularProgressIndicator(
-                                      color: Colors.white,
+                                      color: CustomColors.white,
                                     )
                                   : const Text(
                                       "Registrar",
@@ -176,8 +173,8 @@ class _AccountregistrationState extends State<Accountregistration> {
                               height: 30,
                               decoration: BoxDecoration(
                                   color: mobx.hasError
-                                      ? Colors.yellow
-                                      : Colors.green,
+                                      ? CustomColors.alertYellow
+                                      : CustomColors.successGreen,
                                   borderRadius: BorderRadius.circular(15)),
                               child: Center(
                                 child: Text(

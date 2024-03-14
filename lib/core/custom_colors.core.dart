@@ -20,6 +20,12 @@ class CustomColors {
   //Orange
   static const Color primaryOrange = Color(0xFFDC8B4C);
 
+  //Yellow
+  static const Color alertYellow = Color(0xFFFFee58);
+
+  //Yellow
+  static const Color successGreen = Color(0xFF4CAF50);
+
   static const Color black = Color(0xFF000000);
   static const Color white = Color(0xFFFFFFFF);
   static const Color offWhite = Color(0xFFE9E9E9);

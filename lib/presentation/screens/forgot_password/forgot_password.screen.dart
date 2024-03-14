@@ -113,12 +113,12 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       child: Center(
                         child: mobx.isLoading
                             ? const CircularProgressIndicator(
-                                color: Colors.white,
+                                color: CustomColors.white,
                               )
                             : const Text(
                                 "Enviar email",
                                 style: TextStyle(
-                                  color: Colors.white,
+                                  color: CustomColors.white,
                                   fontSize: 20,
                                 ),
                               ),
@@ -133,8 +133,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                           width: 250,
                           height: 30,
                           decoration: BoxDecoration(
-                              color:
-                                  mobx.hasError ? Colors.yellow : Colors.green,
+                              color: mobx.hasError
+                                  ? CustomColors.alertYellow
+                                  : CustomColors.successGreen,
                               borderRadius: BorderRadius.circular(15)),
                           child: Center(
                             child: Text(
