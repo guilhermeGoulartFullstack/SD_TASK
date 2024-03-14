@@ -196,7 +196,7 @@ class _BuildPeriodModalState extends State<BuildPeriodModal> {
                               setState(() {});
                             },
                             child: Container(
-                              width: 103,
+                              width: 113,
                               height: 29,
                               decoration: isEditing
                                   ? null
@@ -206,6 +206,7 @@ class _BuildPeriodModalState extends State<BuildPeriodModal> {
                                         color: CustomColors.offWhite,
                                         width: 1,
                                       ),
+                                      borderRadius: BorderRadius.circular(7),
                                     ),
                               child: Center(
                                 child: Text(
@@ -216,7 +217,7 @@ class _BuildPeriodModalState extends State<BuildPeriodModal> {
                                       : "",
                                   style: GoogleFonts.inter(
                                     fontSize: 10,
-                                    fontWeight: FontWeight.w500,
+                                    fontWeight: FontWeight.w400,
                                     color: CustomColors.black,
                                   ),
                                 ),
@@ -254,7 +255,7 @@ class _BuildPeriodModalState extends State<BuildPeriodModal> {
                               setState(() {});
                             },
                             child: Container(
-                              width: 103,
+                              width: 113,
                               height: 29,
                               decoration: isEditing
                                   ? null
@@ -264,6 +265,7 @@ class _BuildPeriodModalState extends State<BuildPeriodModal> {
                                         color: CustomColors.offWhite,
                                         width: 1,
                                       ),
+                                      borderRadius: BorderRadius.circular(7),
                                     ),
                               child: Center(
                                 child: Text(
@@ -274,7 +276,7 @@ class _BuildPeriodModalState extends State<BuildPeriodModal> {
                                       : "",
                                   style: GoogleFonts.inter(
                                     fontSize: 10,
-                                    fontWeight: FontWeight.w500,
+                                    fontWeight: FontWeight.w400,
                                     color: CustomColors.black,
                                   ),
                                 ),
@@ -305,18 +307,19 @@ class _BuildPeriodModalState extends State<BuildPeriodModal> {
                                   widget.period?.periodCategory.name ?? "",
                                   style: GoogleFonts.inter(
                                     fontSize: 10,
-                                    fontWeight: FontWeight.w500,
+                                    fontWeight: FontWeight.w400,
                                     color: CustomColors.black,
                                   ),
                                 )
                               : Container(
                                   height: 29,
-                                  width: 103,
+                                  width: 113,
                                   decoration: BoxDecoration(
-                                      color: CustomColors.white,
-                                      border: Border.all(
-                                          color: CustomColors.offWhite,
-                                          width: 1)),
+                                    color: CustomColors.white,
+                                    border: Border.all(
+                                        color: CustomColors.offWhite, width: 1),
+                                    borderRadius: BorderRadius.circular(7),
+                                  ),
                                   child: DropdownButtonHideUnderline(
                                     child: DropdownButton(
                                       isExpanded: true,
@@ -408,6 +411,7 @@ class _BuildPeriodModalState extends State<BuildPeriodModal> {
                                 FilteringTextInputFormatter.digitsOnly
                               ],
                               textAlign: TextAlign.center,
+                              textAlignVertical: TextAlignVertical.bottom,
                               controller: goalOneController,
                               cursorColor:
                                   CustomColors.darkGray.withOpacity(0.7),
@@ -469,6 +473,7 @@ class _BuildPeriodModalState extends State<BuildPeriodModal> {
                             )
                           : TextField(
                               textAlign: TextAlign.center,
+                              textAlignVertical: TextAlignVertical.bottom,
                               keyboardType: TextInputType.number,
                               controller: goalTwoController,
                               inputFormatters: [

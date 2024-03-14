@@ -36,13 +36,13 @@ class MainApp extends StatelessWidget {
         selectionHandleColor: CustomColors.darkGray.withOpacity(0.7),
       )),
       onGenerateRoute: Routes.generatedRoute,
-      localizationsDelegates: [
+      localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: [
-        const Locale('pt'),
+      supportedLocales: const [
+        Locale('pt'),
       ],
     );
   }
