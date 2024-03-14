@@ -12,7 +12,7 @@ class PeriodModalButton extends StatelessWidget {
   });
 
   final String text;
-  final bool canClick;
+  final Function canClick;
   final Function canClickCallback;
   final Function errorCallback;
   final Color color;
@@ -21,7 +21,7 @@ class PeriodModalButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        if (canClick) {
+        if (canClick()) {
           canClickCallback();
         } else {
           errorCallback();

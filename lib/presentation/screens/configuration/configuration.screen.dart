@@ -170,13 +170,31 @@ class _Error extends StatelessWidget {
       body: SizedBox(
         height: size.height,
         width: size.width,
-        child: Center(
-          child: ElevatedButton(
-            onPressed: () {
-              callback();
-            },
-            child: const Text("Recarregar"),
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              "Erro ao carregar dados,",
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            const Text(
+              "tente novamente",
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            const Gap(10),
+            ElevatedButton(
+              onPressed: () {
+                callback();
+              },
+              child: const Text("Recarregar"),
+            ),
+          ],
         ),
       ),
     );
