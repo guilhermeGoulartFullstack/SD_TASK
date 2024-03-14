@@ -2,10 +2,11 @@ import 'package:gap/gap.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:sd_task/core/custom_colors.core.dart';
 import 'package:sd_task/domain/period.domain.dart';
+import 'package:sd_task/core/custom_colors.core.dart';
 import 'package:sd_task/bloc/user_account_bloc.bloc.dart';
 import 'package:sd_task/bloc/user_account_state.bloc.dart';
 import 'package:sd_task/bloc/user_account_event.bloc.dart';
@@ -81,37 +82,22 @@ class _ConfigurationState extends State<Configuration> {
           }
           if (state is UserAccountSuccessState) {
             Size size = MediaQuery.of(context).size;
-            TextEditingController nicknameController =
-                TextEditingController(text: state.userAccount!.nickname);
+            String nickname = state.userAccount!.nickname;
 
-            nicknameController.addListener(() {
-              String nickname = nicknameController.text;
-
-              mobx.setIsNewNicknameFilled(nickname.isNotEmpty);
-            });
             return Scaffold(
               body: SingleChildScrollView(
-                child: SafeArea(
-                    child: SizedBox(
+                child: SizedBox(
                   width: size.width,
                   height: size.height,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: Column(
                       children: [
+                        const Gap(30),
                         const BuildTopNavBar(),
                         const Gap(25),
                         BuildUserAccountInfo(
-                          nicknameController: nicknameController,
-                          mobx: mobx,
-                          nicknameBlocCallback: () {
-                            bloc.add(
-                              EditUserAccountNicknameEvent(
-                                user: currentUser,
-                                newNickname: nicknameController.text,
-                              ),
-                            );
-                          },
+                          nickname: nickname,
                           photoUrl: state.userAccount!.photoUrl,
                           editarFotoCallback: () async {
                             ImagePicker imagePicker = ImagePicker();
@@ -127,14 +113,16 @@ class _ConfigurationState extends State<Configuration> {
                         ),
                         const Divider(),
                         Observer(builder: (context) {
-                          return BuildPeriodList(
-                            userAccount: state.userAccount!,
-                            openNewPeriodModalCallback: () {
-                              return openModal(isEdit: false);
-                            },
-                            openEditModalCallback: (Period period) {
-                              return openModal(isEdit: true, period: period);
-                            },
+                          return Expanded(
+                            child: BuildPeriodList(
+                              userAccount: state.userAccount!,
+                              openNewPeriodModalCallback: () {
+                                return openModal(isEdit: false);
+                              },
+                              openEditModalCallback: (Period period) {
+                                return openModal(isEdit: true, period: period);
+                              },
+                            ),
                           );
                         }),
                         const Gap(40),
@@ -142,10 +130,11 @@ class _ConfigurationState extends State<Configuration> {
                           photoUrl: state.userAccount?.photoUrl,
                           nickName: state.userAccount!.nickname,
                         ),
+                        const Gap(65),
                       ],
                     ),
                   ),
-                )),
+                ),
               ),
             );
           }
@@ -173,16 +162,16 @@ class _Error extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
+            Text(
               "Erro ao carregar dados,",
-              style: TextStyle(
+              style: GoogleFonts.inter(
                 fontSize: 15,
                 fontWeight: FontWeight.w500,
               ),
             ),
-            const Text(
+            Text(
               "tente novamente",
-              style: TextStyle(
+              style: GoogleFonts.inter(
                 fontSize: 15,
                 fontWeight: FontWeight.w500,
               ),

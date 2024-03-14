@@ -2,6 +2,7 @@ import 'package:gap/gap.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:sd_task/domain/period.domain.dart';
 import 'package:sd_task/domain/enums/category.dart';
 import 'package:sd_task/core/custom_colors.core.dart';
@@ -85,9 +86,9 @@ class _BuildPeriodModalState extends State<BuildPeriodModal> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  const Text(
+                  Text(
                     "Novo Período",
-                    style: TextStyle(
+                    style: GoogleFonts.inter(
                       fontSize: 12,
                       fontWeight: FontWeight.w600,
                     ),
@@ -116,7 +117,7 @@ class _BuildPeriodModalState extends State<BuildPeriodModal> {
                         alignment: Alignment.centerLeft,
                         child: Text(
                           widget.period?.name ?? "",
-                          style: const TextStyle(
+                          style: GoogleFonts.inter(
                             fontSize: 12,
                             fontWeight: FontWeight.w600,
                             color: CustomColors.black,
@@ -129,17 +130,29 @@ class _BuildPeriodModalState extends State<BuildPeriodModal> {
                       child: TextField(
                         cursorColor: CustomColors.darkGray.withOpacity(0.7),
                         controller: nameController,
-                        style: const TextStyle(
+                        // textAlign: TextAlign.center,
+                        textAlignVertical: TextAlignVertical.bottom,
+                        style: GoogleFonts.inter(
                           fontSize: 12,
                           fontWeight: FontWeight.w600,
                           color: CustomColors.black,
                         ),
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                             filled: true,
                             fillColor: CustomColors.lightGray,
-                            border: InputBorder.none,
+                            // border: InputBorder.none,
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(5),
+                              borderSide: BorderSide.none,
+                              gapPadding: 0,
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide.none,
+                              borderRadius: BorderRadius.circular(5),
+                              gapPadding: 0,
+                            ),
                             hintText: "Nomeie seu periodo",
-                            hintStyle: TextStyle(
+                            hintStyle: GoogleFonts.inter(
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
                               color: CustomColors.hintGray,
@@ -162,9 +175,9 @@ class _BuildPeriodModalState extends State<BuildPeriodModal> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text(
+                          Text(
                             "Começa",
-                            style: TextStyle(
+                            style: GoogleFonts.inter(
                               fontSize: 12,
                               fontWeight: FontWeight.w500,
                               color: CustomColors.black,
@@ -176,20 +189,24 @@ class _BuildPeriodModalState extends State<BuildPeriodModal> {
                                 context: context,
                                 firstDate: DateTime.now(),
                                 lastDate: DateTime(2050),
+                                locale: const Locale("pt", "BR"),
                               );
+
                               start = startTime?.millisecondsSinceEpoch;
                               setState(() {});
                             },
                             child: Container(
                               width: 103,
                               height: 29,
-                              decoration: BoxDecoration(
-                                color: CustomColors.white,
-                                border: Border.all(
-                                  color: CustomColors.offWhite,
-                                  width: 1,
-                                ),
-                              ),
+                              decoration: isEditing
+                                  ? null
+                                  : BoxDecoration(
+                                      color: CustomColors.white,
+                                      border: Border.all(
+                                        color: CustomColors.offWhite,
+                                        width: 1,
+                                      ),
+                                    ),
                               child: Center(
                                 child: Text(
                                   start != null
@@ -197,7 +214,7 @@ class _BuildPeriodModalState extends State<BuildPeriodModal> {
                                           DateTime.fromMillisecondsSinceEpoch(
                                               start!))
                                       : "",
-                                  style: const TextStyle(
+                                  style: GoogleFonts.inter(
                                     fontSize: 10,
                                     fontWeight: FontWeight.w500,
                                     color: CustomColors.black,
@@ -217,9 +234,9 @@ class _BuildPeriodModalState extends State<BuildPeriodModal> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text(
+                          Text(
                             "Termina",
-                            style: TextStyle(
+                            style: GoogleFonts.inter(
                               fontSize: 12,
                               fontWeight: FontWeight.w500,
                               color: CustomColors.black,
@@ -231,6 +248,7 @@ class _BuildPeriodModalState extends State<BuildPeriodModal> {
                                 context: context,
                                 firstDate: DateTime.now(),
                                 lastDate: DateTime(2050),
+                                locale: const Locale("pt", "BR"),
                               );
                               ends = endsTime?.millisecondsSinceEpoch;
                               setState(() {});
@@ -238,13 +256,15 @@ class _BuildPeriodModalState extends State<BuildPeriodModal> {
                             child: Container(
                               width: 103,
                               height: 29,
-                              decoration: BoxDecoration(
-                                color: CustomColors.white,
-                                border: Border.all(
-                                  color: CustomColors.offWhite,
-                                  width: 1,
-                                ),
-                              ),
+                              decoration: isEditing
+                                  ? null
+                                  : BoxDecoration(
+                                      color: CustomColors.white,
+                                      border: Border.all(
+                                        color: CustomColors.offWhite,
+                                        width: 1,
+                                      ),
+                                    ),
                               child: Center(
                                 child: Text(
                                   ends != null
@@ -252,7 +272,7 @@ class _BuildPeriodModalState extends State<BuildPeriodModal> {
                                           DateTime.fromMillisecondsSinceEpoch(
                                               ends!))
                                       : "",
-                                  style: const TextStyle(
+                                  style: GoogleFonts.inter(
                                     fontSize: 10,
                                     fontWeight: FontWeight.w500,
                                     color: CustomColors.black,
@@ -272,9 +292,9 @@ class _BuildPeriodModalState extends State<BuildPeriodModal> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text(
+                          Text(
                             "Categoria",
-                            style: TextStyle(
+                            style: GoogleFonts.inter(
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
                               color: CustomColors.black,
@@ -283,63 +303,70 @@ class _BuildPeriodModalState extends State<BuildPeriodModal> {
                           isEditing
                               ? Text(
                                   widget.period?.periodCategory.name ?? "",
-                                  style: const TextStyle(
-                                    fontSize: 12,
+                                  style: GoogleFonts.inter(
+                                    fontSize: 10,
                                     fontWeight: FontWeight.w500,
                                     color: CustomColors.black,
                                   ),
                                 )
-                              : DropdownMenu(
-                                  onSelected: (value) {
-                                    periodCategory = value;
-                                  },
-                                  initialSelection:
-                                      widget.period?.periodCategory,
-                                  width: 130,
-                                  textStyle: const TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w600,
-                                    color: CustomColors.black,
-                                  ),
-                                  inputDecorationTheme: InputDecorationTheme(
-                                    fillColor: CustomColors.white,
-                                    filled: true,
-                                    enabledBorder: const OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: CustomColors.offWhite,
+                              : Container(
+                                  height: 29,
+                                  width: 103,
+                                  decoration: BoxDecoration(
+                                      color: CustomColors.white,
+                                      border: Border.all(
+                                          color: CustomColors.offWhite,
+                                          width: 1)),
+                                  child: DropdownButtonHideUnderline(
+                                    child: DropdownButton(
+                                      isExpanded: true,
+                                      padding:
+                                          EdgeInsets.only(left: 10, right: 9),
+                                      icon: SvgPicture.asset(
+                                        'lib/assets/svg/dropdown_icon.asset.svg',
                                       ),
-                                    ),
-                                    isDense: true,
-                                    contentPadding: const EdgeInsets.symmetric(
-                                        horizontal: 2),
-                                    constraints: BoxConstraints.tight(
-                                        const Size.fromHeight(29)),
-                                    border: OutlineInputBorder(
+                                      value: periodCategory,
+                                      onChanged: (value) {
+                                        setState(() {
+                                          periodCategory = value;
+                                        });
+                                      },
                                       borderRadius: BorderRadius.circular(7),
+                                      alignment: Alignment.centerRight,
+                                      style: GoogleFonts.inter(
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.w600,
+                                        color: CustomColors.black,
+                                      ),
+                                      items: [
+                                        DropdownMenuItem(
+                                            value: PeriodCategory.one,
+                                            child: Text(
+                                              PeriodCategory.one.name,
+                                            )),
+                                        DropdownMenuItem(
+                                            value: PeriodCategory.two,
+                                            child: Text(
+                                              PeriodCategory.two.name,
+                                            )),
+                                        DropdownMenuItem(
+                                            value: PeriodCategory.three,
+                                            child: Text(
+                                              PeriodCategory.three.name,
+                                            )),
+                                        DropdownMenuItem(
+                                            value: PeriodCategory.four,
+                                            child: Text(
+                                              PeriodCategory.four.name,
+                                            )),
+                                        DropdownMenuItem(
+                                            value: PeriodCategory.five,
+                                            child: Text(
+                                              PeriodCategory.five.name,
+                                            )),
+                                      ],
                                     ),
                                   ),
-                                  dropdownMenuEntries: [
-                                    DropdownMenuEntry(
-                                      value: PeriodCategory.one,
-                                      label: PeriodCategory.one.name,
-                                    ),
-                                    DropdownMenuEntry(
-                                      value: PeriodCategory.two,
-                                      label: PeriodCategory.two.name,
-                                    ),
-                                    DropdownMenuEntry(
-                                      value: PeriodCategory.three,
-                                      label: PeriodCategory.three.name,
-                                    ),
-                                    DropdownMenuEntry(
-                                      value: PeriodCategory.four,
-                                      label: PeriodCategory.four.name,
-                                    ),
-                                    DropdownMenuEntry(
-                                      value: PeriodCategory.five,
-                                      label: PeriodCategory.five.name,
-                                    ),
-                                  ],
                                 )
                         ],
                       ),
@@ -354,9 +381,9 @@ class _BuildPeriodModalState extends State<BuildPeriodModal> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
+                    Text(
                       "Meta 1",
-                      style: TextStyle(
+                      style: GoogleFonts.inter(
                         fontSize: 12,
                         fontWeight: FontWeight.w600,
                         color: CustomColors.black,
@@ -369,7 +396,7 @@ class _BuildPeriodModalState extends State<BuildPeriodModal> {
                           ? Center(
                               child: Text(
                                 widget.period?.goalOne.toString() ?? "",
-                                style: const TextStyle(
+                                style: GoogleFonts.inter(
                                   fontSize: 10,
                                   fontWeight: FontWeight.w500,
                                 ),
@@ -384,18 +411,18 @@ class _BuildPeriodModalState extends State<BuildPeriodModal> {
                               controller: goalOneController,
                               cursorColor:
                                   CustomColors.darkGray.withOpacity(0.7),
-                              style: const TextStyle(
+                              style: GoogleFonts.inter(
                                 fontSize: 10,
                                 fontWeight: FontWeight.w500,
                               ),
-                              decoration: const InputDecoration(
+                              decoration: InputDecoration(
                                 hintText: "un",
-                                hintStyle: TextStyle(
+                                hintStyle: GoogleFonts.inter(
                                   fontSize: 10,
                                   fontWeight: FontWeight.w500,
                                   color: CustomColors.offWhite,
                                 ),
-                                enabledBorder: OutlineInputBorder(
+                                enabledBorder: const OutlineInputBorder(
                                   borderSide: BorderSide(
                                     color: CustomColors.offWhite,
                                   ),
@@ -417,9 +444,9 @@ class _BuildPeriodModalState extends State<BuildPeriodModal> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
+                    Text(
                       "Meta 2",
-                      style: TextStyle(
+                      style: GoogleFonts.inter(
                         fontSize: 12,
                         fontWeight: FontWeight.w600,
                         color: CustomColors.black,
@@ -434,7 +461,7 @@ class _BuildPeriodModalState extends State<BuildPeriodModal> {
                                 (widget.period?.goalTwo != null)
                                     ? widget.period!.goalTwo.toString()
                                     : "",
-                                style: const TextStyle(
+                                style: GoogleFonts.inter(
                                   fontSize: 10,
                                   fontWeight: FontWeight.w500,
                                 ),
@@ -449,23 +476,23 @@ class _BuildPeriodModalState extends State<BuildPeriodModal> {
                               ],
                               cursorColor:
                                   CustomColors.darkGray.withOpacity(0.7),
-                              style: const TextStyle(
+                              style: GoogleFonts.inter(
                                 fontSize: 10,
                                 fontWeight: FontWeight.w500,
                               ),
-                              decoration: const InputDecoration(
+                              decoration: InputDecoration(
                                 hintText: "un",
-                                hintStyle: TextStyle(
+                                hintStyle: GoogleFonts.inter(
                                   fontSize: 10,
                                   fontWeight: FontWeight.w500,
                                   color: CustomColors.offWhite,
                                 ),
-                                enabledBorder: OutlineInputBorder(
+                                enabledBorder: const OutlineInputBorder(
                                   borderSide: BorderSide(
                                     color: CustomColors.offWhite,
                                   ),
                                 ),
-                                focusedBorder: OutlineInputBorder(
+                                focusedBorder: const OutlineInputBorder(
                                   borderSide: BorderSide(
                                     color: CustomColors.offWhite,
                                   ),
@@ -564,10 +591,10 @@ class _BuildPeriodModalState extends State<BuildPeriodModal> {
                         borderRadius: BorderRadius.circular(20),
                         color: CustomColors.alertYellow,
                       ),
-                      child: const Center(
+                      child: Center(
                         child: Text(
                           "Preencha todos os campos",
-                          style: TextStyle(
+                          style: GoogleFonts.inter(
                             fontWeight: FontWeight.w600,
                           ),
                         ),

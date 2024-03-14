@@ -1,5 +1,6 @@
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:sd_task/core/custom_colors.core.dart';
 
 class PeriodCard extends StatelessWidget {
@@ -39,7 +40,7 @@ class PeriodCard extends StatelessWidget {
             children: [
               Text(
                 name,
-                style: const TextStyle(
+                style: GoogleFonts.inter(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
                   color: CustomColors.black,
@@ -47,7 +48,7 @@ class PeriodCard extends StatelessWidget {
               ),
               Text(
                 '${dateFormater(date: start)} a ${dateFormater(date: ends)}',
-                style: const TextStyle(
+                style: GoogleFonts.inter(
                   fontSize: 11,
                   fontWeight: FontWeight.w500,
                   color: CustomColors.darkGray,

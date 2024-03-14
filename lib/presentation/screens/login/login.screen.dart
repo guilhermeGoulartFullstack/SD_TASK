@@ -1,6 +1,7 @@
 import 'package:gap/gap.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:sd_task/core/custom_colors.core.dart';
@@ -104,7 +105,7 @@ class _LoginState extends State<Login> {
                           GestureDetector(
                             child: Text(
                               "Esqueceu a senha?",
-                              style: TextStyle(
+                              style: GoogleFonts.inter(
                                 color: CustomColors.darkGray.withOpacity(0.5),
                                 fontWeight: FontWeight.w900,
                               ),
@@ -143,9 +144,9 @@ class _LoginState extends State<Login> {
                                     ? const CircularProgressIndicator(
                                         color: CustomColors.white,
                                       )
-                                    : const Text(
+                                    : Text(
                                         "Login",
-                                        style: TextStyle(
+                                        style: GoogleFonts.inter(
                                           color: CustomColors.white,
                                           fontSize: 25,
                                           fontWeight: FontWeight.w500,
@@ -168,7 +169,7 @@ class _LoginState extends State<Login> {
                                 child: Center(
                                   child: Text(
                                     errorMessage,
-                                    style: const TextStyle(
+                                    style: GoogleFonts.inter(
                                       color: CustomColors.black,
                                       fontWeight: FontWeight.w500,
                                     ),
@@ -187,9 +188,9 @@ class _LoginState extends State<Login> {
                     children: [
                       const Text("Não possui conta?"),
                       GestureDetector(
-                        child: const Text(
+                        child: Text(
                           "Registar",
-                          style: TextStyle(
+                          style: GoogleFonts.inter(
                             color: CustomColors.secondaryBlue,
                             fontWeight: FontWeight.w900,
                           ),

@@ -4,6 +4,7 @@ import 'package:sd_task/firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:sd_task/core/custom_colors.core.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:sd_task/presentation/screens/login/login.screen.dart';
 import 'package:sd_task/presentation/screens/configuration/configuration.screen.dart';
 
@@ -35,6 +36,14 @@ class MainApp extends StatelessWidget {
         selectionHandleColor: CustomColors.darkGray.withOpacity(0.7),
       )),
       onGenerateRoute: Routes.generatedRoute,
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+        const Locale('pt'),
+      ],
     );
   }
 }
