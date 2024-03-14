@@ -9,6 +9,8 @@ class ApiErrorTraslator {
         return "Email ou senha inválidos";
       case "weak-password":
         return "Senha deve ter mais de 6 dígitos";
+      case "email-already-in-use":
+        return "Email já utilizado por outra conta";
       default:
         return "Erro inesperado";
     }

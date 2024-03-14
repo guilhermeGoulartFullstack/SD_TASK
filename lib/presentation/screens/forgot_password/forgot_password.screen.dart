@@ -79,7 +79,15 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   width: 100,
                   height: 100,
                 ),
-                const Gap(50),
+                const Gap(25),
+                const Text(
+                  "Preencha seu email cadastrado",
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                const Gap(25),
                 DefaultTextField(
                   controller: emailController,
                   isObscure: false,
