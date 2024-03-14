@@ -166,7 +166,7 @@ class _BuildPeriodModalState extends State<BuildPeriodModal> {
                             "Começa",
                             style: TextStyle(
                               fontSize: 12,
-                              fontWeight: FontWeight.w600,
+                              fontWeight: FontWeight.w500,
                               color: CustomColors.black,
                             ),
                           ),
@@ -221,7 +221,7 @@ class _BuildPeriodModalState extends State<BuildPeriodModal> {
                             "Termina",
                             style: TextStyle(
                               fontSize: 12,
-                              fontWeight: FontWeight.w600,
+                              fontWeight: FontWeight.w500,
                               color: CustomColors.black,
                             ),
                           ),
@@ -285,7 +285,7 @@ class _BuildPeriodModalState extends State<BuildPeriodModal> {
                                   widget.period?.periodCategory.name ?? "",
                                   style: const TextStyle(
                                     fontSize: 12,
-                                    fontWeight: FontWeight.w600,
+                                    fontWeight: FontWeight.w500,
                                     color: CustomColors.black,
                                   ),
                                 )

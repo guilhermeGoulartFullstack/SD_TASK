@@ -2,6 +2,7 @@ import 'package:gap/gap.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:sd_task/core/custom_colors.core.dart';
 
 class BuildTopNavBar extends StatelessWidget {
   const BuildTopNavBar({super.key});
@@ -24,6 +25,7 @@ class BuildTopNavBar extends StatelessWidget {
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.w600,
+              color: CustomColors.black,
             ),
           ),
         ],

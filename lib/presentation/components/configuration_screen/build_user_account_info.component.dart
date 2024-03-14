@@ -39,7 +39,14 @@ class _BuildUserAccountInfoState extends State<BuildUserAccountInfo> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text("Apelido"),
+                const Text(
+                  "Apelido",
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 11,
+                    color: CustomColors.black,
+                  ),
+                ),
                 const Gap(5),
                 Observer(builder: (context) {
                   return Container(
@@ -149,6 +156,7 @@ class _BuildUserAccountInfoState extends State<BuildUserAccountInfo> {
                       style: TextStyle(
                         fontSize: 11,
                         fontWeight: FontWeight.w500,
+                        color: CustomColors.black,
                       ),
                     ),
                   )

@@ -37,6 +37,7 @@ class _BuildPeriodListState extends State<BuildPeriodList> {
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
+                color: CustomColors.black,
               ),
             ),
           ),

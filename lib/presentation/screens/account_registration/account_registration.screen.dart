@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:gap/gap.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -69,6 +71,7 @@ class _AccountregistrationState extends State<Accountregistration> {
       }
       apiMessage = "Conta criada com sucesso!";
     } on FirebaseAuthException catch (e) {
+      log(e.toString());
       apiMessage = ApiErrorTraslator.translate(exception: e);
       mobx.setHasError(true);
     } finally {
