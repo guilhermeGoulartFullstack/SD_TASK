@@ -483,7 +483,9 @@ class _BuildPeriodModalState extends State<BuildPeriodModal> {
                       children: [
                         PeriodModalButton(
                           text: "Excluir",
-                          canClick: true,
+                          canClick: () {
+                            return true;
+                          },
                           canClickCallback: () {
                             Navigator.pop(context);
                             widget.deletePeriodCallback(widget.period?.id);
@@ -493,7 +495,9 @@ class _BuildPeriodModalState extends State<BuildPeriodModal> {
                         ),
                         PeriodModalButton(
                           text: "Editar",
-                          canClick: true,
+                          canClick: () {
+                            return true;
+                          },
                           canClickCallback: () {
                             setState(() {
                               isEditing = false;
@@ -516,11 +520,13 @@ class _BuildPeriodModalState extends State<BuildPeriodModal> {
                   : PeriodModalButton(
                       text: "Concluir",
                       color: CustomColors.primaryBlue,
-                      canClick: (nameController.text.isNotEmpty &&
-                          (start != null) &&
-                          (ends != null) &&
-                          (periodCategory != null) &&
-                          (goalOneController.text.isNotEmpty)),
+                      canClick: () {
+                        return ((nameController.text.isNotEmpty) &&
+                            (start != null) &&
+                            (ends != null) &&
+                            (periodCategory != null) &&
+                            (goalOneController.text.isNotEmpty));
+                      },
                       canClickCallback: () {
                         setState(() {
                           hasError = false;
@@ -535,7 +541,7 @@ class _BuildPeriodModalState extends State<BuildPeriodModal> {
                               ? int.parse(goalTwoController.text)
                               : null,
                         );
-                        if (widget.period != null) {
+                        if (widget.period == null) {
                           widget.addPeriodCallback(request);
                         } else {
                           request.id = widget.period?.id;

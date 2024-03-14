@@ -7,7 +7,6 @@ import 'package:sd_task/core/custom_colors.core.dart';
 import 'package:sd_task/utils/api_error_translator.util.dart';
 import 'package:sd_task/presentation/screens/login/mobx/login_mobx.mobx.dart';
 import 'package:sd_task/presentation/components/default_text_field.component.dart';
-import 'package:sd_task/firebase/controller/user_account_controller.firebase.dart';
 import 'package:sd_task/presentation/components/google_sign_in_button.component.dart';
 import 'package:sd_task/presentation/screens/forgot_password/forgot_password.screen.dart';
 import 'package:sd_task/presentation/screens/account_registration/account_registration.screen.dart';
@@ -59,8 +58,6 @@ class _LoginState extends State<Login> {
         mobx.setHasError(false);
         await FirebaseAuth.instance.signInWithEmailAndPassword(
             email: emailController.text, password: passwordController.text);
-        User? user = FirebaseAuth.instance.currentUser;
-        await UserAccountController().add(user: user);
       } on FirebaseAuthException catch (e) {
         mobx.setHasError(true);
         errorMessage = ApiErrorTraslator.translate(exception: e);
