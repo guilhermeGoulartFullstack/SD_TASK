@@ -562,7 +562,7 @@ class _BuildPeriodModalState extends State<BuildPeriodModal> {
                       height: 25,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
-                        color: Colors.yellow,
+                        color: CustomColors.alertYellow,
                       ),
                       child: const Center(
                         child: Text(
