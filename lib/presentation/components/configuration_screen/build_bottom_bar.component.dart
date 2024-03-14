@@ -1,5 +1,6 @@
 import 'package:gap/gap.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:sd_task/core/custom_colors.core.dart';
 
@@ -40,7 +41,7 @@ class BuildBottomBar extends StatelessWidget {
           children: [
             Text(
               nickName,
-              style: const TextStyle(
+              style: GoogleFonts.inter(
                 color: CustomColors.terciaryBlue,
                 fontWeight: FontWeight.w500,
                 fontSize: 13,
@@ -50,13 +51,14 @@ class BuildBottomBar extends StatelessWidget {
               onTap: () {
                 FirebaseAuth.instance.signOut();
               },
-              child: const Text(
+              child: Text(
                 "Sair",
-                style: TextStyle(
-                    color: CustomColors.terciaryBlue,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 13,
-                    decoration: TextDecoration.underline),
+                style: GoogleFonts.inter(
+                  color: CustomColors.terciaryBlue,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 13,
+                  decoration: TextDecoration.underline,
+                ),
               ),
             ),
           ],

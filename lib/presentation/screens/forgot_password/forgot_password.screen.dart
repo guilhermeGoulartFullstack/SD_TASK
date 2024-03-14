@@ -2,6 +2,7 @@ import 'package:gap/gap.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:sd_task/core/custom_colors.core.dart';
 import 'package:sd_task/utils/api_error_translator.util.dart';
@@ -80,9 +81,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   height: 100,
                 ),
                 const Gap(25),
-                const Text(
+                Text(
                   "Preencha seu email cadastrado",
-                  style: TextStyle(
+                  style: GoogleFonts.inter(
                     fontSize: 12,
                     fontWeight: FontWeight.w600,
                   ),
@@ -115,9 +116,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                             ? const CircularProgressIndicator(
                                 color: CustomColors.white,
                               )
-                            : const Text(
+                            : Text(
                                 "Enviar email",
-                                style: TextStyle(
+                                style: GoogleFonts.inter(
                                   color: CustomColors.white,
                                   fontSize: 20,
                                 ),
@@ -140,7 +141,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                           child: Center(
                             child: Text(
                               apiMessage,
-                              style: const TextStyle(
+                              style: GoogleFonts.inter(
                                 color: CustomColors.black,
                                 fontWeight: FontWeight.w500,
                               ),

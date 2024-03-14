@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:sd_task/core/custom_colors.core.dart';
 
 class PeriodModalButton extends StatelessWidget {
@@ -37,7 +38,7 @@ class PeriodModalButton extends StatelessWidget {
         child: Center(
           child: Text(
             text,
-            style: const TextStyle(
+            style: GoogleFonts.inter(
               fontSize: 12,
               color: CustomColors.white,
               fontWeight: FontWeight.w600,

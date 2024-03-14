@@ -2,11 +2,12 @@ import 'package:gap/gap.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:sd_task/core/custom_colors.core.dart';
-import 'package:sd_task/firebase/controller/user_account_controller.firebase.dart';
 import 'package:sd_task/utils/api_error_translator.util.dart';
+import 'package:sd_task/firebase/controller/user_account_controller.firebase.dart';
 import 'package:sd_task/presentation/components/default_text_field.component.dart';
 import 'package:sd_task/presentation/screens/account_registration/mobx/account_registration_mobx.mobx.dart';
 
@@ -152,9 +153,9 @@ class _AccountregistrationState extends State<Accountregistration> {
                                   ? const CircularProgressIndicator(
                                       color: CustomColors.white,
                                     )
-                                  : const Text(
+                                  : Text(
                                       "Registrar",
-                                      style: TextStyle(
+                                      style: GoogleFonts.inter(
                                         color: CustomColors.white,
                                         fontSize: 20,
                                         fontWeight: FontWeight.w600,
@@ -179,7 +180,7 @@ class _AccountregistrationState extends State<Accountregistration> {
                               child: Center(
                                 child: Text(
                                   apiMessage,
-                                  style: const TextStyle(
+                                  style: GoogleFonts.inter(
                                     color: CustomColors.black,
                                     fontWeight: FontWeight.w500,
                                   ),

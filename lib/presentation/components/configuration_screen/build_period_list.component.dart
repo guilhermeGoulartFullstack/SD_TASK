@@ -1,5 +1,6 @@
 import 'package:gap/gap.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:sd_task/domain/period.domain.dart';
 import 'package:sd_task/core/custom_colors.core.dart';
 import 'package:sd_task/domain/user_account.domain.dart';
@@ -26,15 +27,14 @@ class _BuildPeriodListState extends State<BuildPeriodList> {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.maxFinite,
-      height: 400,
       child: Column(
         children: [
           const Gap(10),
-          const Align(
+          Align(
             alignment: Alignment.topLeft,
             child: Text(
               "Períodos",
-              style: TextStyle(
+              style: GoogleFonts.inter(
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
                 color: CustomColors.black,
@@ -56,7 +56,7 @@ class _BuildPeriodListState extends State<BuildPeriodList> {
                     padding:
                         const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
                     child: GestureDetector(
-                      onDoubleTap: () {
+                      onTap: () {
                         widget.openEditModalCallback(currentPeriod);
                       },
                       child: PeriodCard(
@@ -87,10 +87,10 @@ class _BuildPeriodListState extends State<BuildPeriodList> {
                   borderRadius: BorderRadius.circular(15),
                   color: CustomColors.primaryBlue,
                 ),
-                child: const Center(
+                child: Center(
                   child: Text(
                     "Adicionar Período",
-                    style: TextStyle(
+                    style: GoogleFonts.inter(
                       color: CustomColors.white,
                       fontSize: 10,
                     ),

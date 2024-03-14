@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:sd_task/core/custom_colors.core.dart';
 
 class DefaultTextField extends StatefulWidget {
@@ -24,7 +25,7 @@ class _DefaultTextFieldState extends State<DefaultTextField> {
       controller: widget.controller,
       obscureText: widget.isObscure,
       cursorColor: CustomColors.darkGray.withOpacity(0.7),
-      style: const TextStyle(
+      style: GoogleFonts.inter(
         color: CustomColors.black,
         fontWeight: FontWeight.w400,
       ),
